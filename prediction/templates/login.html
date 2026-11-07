@@ -18,8 +18,9 @@
             {% endfor %}
         {% endif %}
 
-        <form method="post" action="">
+        <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
+            {{ form.non_field_errors }}
 
             <label for="username">Username</label>
             <input type="text" id="username" name="username" placeholder="Enter your username" required>
@@ -28,6 +29,9 @@
             <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
             <button type="submit">Login</button>
+            <p class="forgot-password">
+    <a href="{% url 'password_reset' %}">Forgot Password?</a>
+</p>
         </form>
 
         <p class="switch-text">

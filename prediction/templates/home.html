@@ -13,14 +13,20 @@
     <input type="checkbox" id="menu-toggle" class="menu-toggle">
 
     <!-- Top bar -->
-    <header class="topbar">
-        <label for="menu-toggle" class="hamburger" aria-label="Open menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
-        <h1 class="app-title">Loan Prediction</h1>
-    </header>
+   <header class="topbar">
+    <label for="menu-toggle" class="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <h1 class="app-title">Loan Prediction</h1>
+
+    <form method="post" action="{% url 'logout' %}" class="logout-form">
+        {% csrf_token %}
+        <button type="submit" class="logout-btn">Logout</button>
+    </form>
+</header>
 
     <!-- Click outside the drawer to close it -->
     <label for="menu-toggle" class="overlay"></label>
