@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Prediction</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+
+    <!-- Checkbox controls the drawer (no JavaScript needed) -->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+    <!-- Top bar -->
+    <header class="topbar">
+        <label for="menu-toggle" class="hamburger" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <h1 class="app-title">Loan Prediction</h1>
+    </header>
+
+    <!-- Click outside the drawer to close it -->
+    <label for="menu-toggle" class="overlay"></label>
+
+    <!-- Side drawer -->
+    <nav class="drawer">
+        <div class="drawer-header">
+            <span>Menu</span>
+            <label for="menu-toggle" class="close-btn" aria-label="Close menu">&times;</label>
+        </div>
+        <ul>
+            <li><a>Profile</a></li>
+            <li><a>Troubleshooting</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <main class="content">
+        <h2 class="page-heading">Choose a prediction</h2>
+
+        <div class="cards">
+
+            <!-- Loan Eligibility -->
+            <div class="card card-blue">
+                <h3>Loan Eligibility Head</h3>
+                <p class="model-type">Dense + Sigmoid</p>
+                <div class="question-box">
+                    <p class="question">Is the person eligible for a loan?</p>
+                    <p class="answer">Yes / No</p>
+                </div>
+                <button type="button">Predict</button>
+            </div>
+
+            <!-- Default Risk -->
+            <div class="card card-red">
+                <h3>Default Risk Head</h3>
+                <p class="model-type">Dense + Sigmoid</p>
+                <div class="question-box">
+                    <p class="question">Will the person become a defaulter?</p>
+                    <p class="answer">Yes / No</p>
+                </div>
+                <button type="button">Predict</button>
+            </div>
+
+            <!-- Future Loan Uptake -->
+            <div class="card card-green">
+                <h3>Future Loan Uptake Head</h3>
+                <p class="model-type">Dense + Sigmoid</p>
+                <div class="question-box">
+                    <p class="question">Will the person take a loan in the future?</p>
+                    <p class="answer">Yes / No</p>
+                </div>
+                <button type="button">Predict</button>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
