@@ -2,6 +2,7 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
+from .forms import UsernamePasswordResetForm
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -25,15 +26,16 @@ urlpatterns = [
     ),
 
     path(
-        'forgot-password/',
-        auth_views.PasswordResetView.as_view(
-            template_name='password_reset.html',
-            email_template_name='password_reset_email.html',
-            subject_template_name='password_reset_subject.txt',
-            success_url='/forgot-password/sent/'
-        ),
-        name='password_reset'
+    'forgot-password/',
+    auth_views.PasswordResetView.as_view(
+        template_name='password_reset.html',
+        form_class=UsernamePasswordResetForm,
+        email_template_name='password_reset_email.html',
+        subject_template_name='password_reset_subject.txt',
+        success_url='/forgot-password/sent/'
     ),
+    name='password_reset'
+),
 
     path(
         'forgot-password/sent/',
