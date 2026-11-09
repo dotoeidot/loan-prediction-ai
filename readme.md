@@ -1,8 +1,45 @@
 # Loan Prediction AI
 
-A Django-based web application for loan prediction, featuring user registration, authentication, password reset functionality, and a loan prediction interface.
+A Django-based web application featuring user registration, authentication, password reset functionality, and machine learning-based loan predictions.
 
-## 1. Prerequisites
+The application currently provides two prediction capabilities:
+
+- **Loan Eligibility Prediction:** Uses LE-DKDNet (Loan Eligibility Deep Knowledge Distillation Network), a lightweight neural network trained using Knowledge Distillation, to estimate an applicant's loan eligibility.
+- **Loan Uptake Prediction:** Uses the existing machine learning model to predict the likelihood of a customer taking up a loan.
+
+## 1. Model Architecture
+
+The application integrates two independent prediction models.
+
+### Loan Eligibility – LE-DKDNet
+
+LE-DKDNet (Loan Eligibility Deep Knowledge Distillation Network) is a lightweight Multi-Layer Perceptron (MLP) trained using Knowledge Distillation.
+
+- **Teacher Model:** FLANG-BERT
+- **Student Model:** Lightweight MLP neural network
+- **Training Approach:** Knowledge Distillation
+- **Inference:** The trained Student model performs predictions without requiring the Teacher model.
+- **Framework:** PyTorch
+
+The model estimates loan eligibility based on applicant information such as age, annual income, credit score, loan amount, loan term, debt-to-income ratio, employment type, and loan purpose.
+
+### Loan Uptake Prediction
+
+The application also retains its existing machine learning model for predicting the likelihood of loan uptake.
+
+### Project Dependencies
+
+The project dependencies include:
+
+- **Django** – Web application framework
+- **PyTorch** – Student neural network inference
+- **NumPy** – Numerical operations and preprocessing
+- **Scikit-learn** – Existing machine learning model and preprocessing utilities
+- **python-dotenv** – Environment variable management
+
+**Note:** PyTorch is used for the LE-DKDNet Student model. The Teacher model is not required to run the application.
+
+## 2. Prerequisites
 
 Install the following software before starting:
 
@@ -27,7 +64,7 @@ python --version
 git --version
 ```
 
-## 2. Clone the Repository
+## 3. Clone the Repository
 
 Open a terminal and navigate to the directory where you want to store the project.
 
@@ -49,7 +86,7 @@ Open the project in VS Code:
 code .
 ```
 
-## 3. Create a Virtual Environment
+## 4. Create a Virtual Environment
 
 A virtual environment keeps the project's Python dependencies separate from other Python projects.
 
@@ -79,7 +116,7 @@ Then activate the environment again:
 
 Once activated, you should see `(venv)` at the beginning of your terminal prompt.
 
-## 4. Install Project Dependencies
+## 5. Install Project Dependencies
 
 Upgrade pip:
 
@@ -93,11 +130,11 @@ Install all required Python packages:
 pip install -r requirements.txt
 ```
 
-This installs Django and the other dependencies required by the application, including the environment-variable loader.
+This installs Django and the other dependencies required by the application, including PyTorch, NumPy, Scikit-learn, and the environment-variable loader.
 
 **Note:** There is no need to install Django or individual packages separately when the requirements file has been installed successfully.
 
-## 5. Environment Configuration
+## 6. Environment Configuration
 
 The project uses a `.env` file in the root directory, alongside `manage.py`, to load the email configuration.
 
@@ -105,7 +142,7 @@ The `.env` file is included in the repository, so no separate environment-variab
 
 Django loads these settings automatically when the application starts.
 
-## 6. Set Up the Database
+## 7. Set Up the Database
 
 The application uses SQLite as its database.
 
@@ -127,7 +164,7 @@ Follow the prompts to configure the administrator username, email, and password.
 
 This step is optional.
 
-## 7. Start the Development Server
+## 8. Start the Development Server
 
 Run the following command:
 
@@ -149,7 +186,7 @@ To stop the server, press:
 CTRL + C
 ```
 
-## 8. Common Commands
+## 9. Common Commands
 
 | Command | Purpose |
 |---|---|
@@ -160,7 +197,7 @@ CTRL + C
 | `python manage.py check` | Check the Django project for configuration issues |
 | `pip install -r requirements.txt` | Install project dependencies |
 
-## 9. Troubleshooting
+## 10. Troubleshooting
 
 **Issue: Python is not recognized**
 
@@ -208,7 +245,7 @@ Then visit http://127.0.0.1:8001/.
 
 ---
 
-## 10. Project Setup Summary
+## 11. Project Setup Summary
 
 For future reference, once Git and Python are installed, the essential setup commands are:
 
@@ -230,4 +267,10 @@ python manage.py runserver
 
 Open http://127.0.0.1:8000/ to access the application.
 
+The repository includes the trained model artifacts required for Loan Eligibility Prediction. No separate model training or Teacher model download is required to run predictions.
+
 **That's it!** The application should now be running on your local development server.
+
+## 12. Model Disclaimer
+
+The Loan Eligibility model provides an estimated prediction based on its training data. It is intended for demonstration and research purposes and should not be interpreted as an actual loan approval or rejection decision by a financial institution.
