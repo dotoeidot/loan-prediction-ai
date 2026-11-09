@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -97,3 +98,30 @@ button:hover {
 .switch-text a:hover {
     text-decoration: underline;
 }
+
+/* Password visibility toggle */
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 19px;
+    transform: translateY(-50%);
+    width: auto;
+    margin: 0;
+    padding: 5px;
+    background: transparent;
+    border: none;
+    color: #398f4a;
+    cursor: pointer;
+    font-size: 13px;
+    z-index: 2;
+}
+
+.password-wrapper .toggle-password:hover {
+    background: transparent;
+    text-decoration: underline;
+}
+
