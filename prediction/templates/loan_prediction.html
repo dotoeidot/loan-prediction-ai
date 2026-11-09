@@ -1,0 +1,137 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Prediction</title>
+    <link rel="stylesheet" href="{% static 'css/loan_prediction.css' %}">
+</head>
+
+<body>
+
+<div class="prediction-container">
+
+    <h1>Loan Prediction</h1>
+    <p class="subtitle">Enter customer details to predict future loan uptake.</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label>Age</label>
+                <input type="number" name="age" min="18" max="100" required>
+            </div>
+
+            <div class="form-group">
+                <label>Professional Experience (Years)</label>
+                <input type="number" name="experience" min="0" max="100" required>
+            </div>
+
+            <div class="form-group">
+                <label>Annual Income (in $1000s)</label>
+                <input type="number" name="income" min="0" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label>Family Size</label>
+                <select name="family" required>
+                    <option value="">Select family size</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Average Monthly Credit Card Spending (in $1000s)</label>
+                <input type="number" name="ccavg" min="0" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label>Education Level</label>
+                <select name="education" required>
+                    <option value="">Select education</option>
+                    <option value="1">Undergraduate</option>
+                    <option value="2">Graduate</option>
+                    <option value="3">Advanced / Professional</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Mortgage (in $1000s)</label>
+                <input type="number" name="mortgage" min="0" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label>Securities Account</label>
+                <select name="securities_account" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>CD Account</label>
+                <select name="cd_account" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Online Banking</label>
+                <select name="online" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Credit Card</label>
+                <select name="credit_card" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+        </div>
+
+        <button type="submit" class="predict-btn">Predict</button>
+
+    </form>
+
+    {% if error %}
+        <div class="error-message">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    {% if result %}
+        <div class="result-container">
+            <h2>Prediction Result</h2>
+
+            {% if result.prediction == 1 %}
+                <p class="result-positive">
+                    Customer is likely to accept the future loan offer.
+                </p>
+            {% else %}
+                <p class="result-negative">
+                    Customer is unlikely to accept the future loan offer.
+                </p>
+            {% endif %}
+
+            <p class="probability">
+                Predicted Probability: <strong>{{ result.probability }}%</strong>
+            </p>
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

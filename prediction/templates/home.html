@@ -79,7 +79,9 @@
                     <p class="question">Will the person take a loan in the future?</p>
                     <p class="answer">Yes / No</p>
                 </div>
-                <button type="button">Predict</button>
+                <form action="{% url 'loan_prediction' %}" method="get">
+                    <button type="submit">Predict</button>
+                </form>
             </div>
 
         </div>
