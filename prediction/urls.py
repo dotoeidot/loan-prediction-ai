@@ -6,7 +6,11 @@ from .forms import UsernamePasswordResetForm
 
 urlpatterns = [
     path('', views.home, name='home'),
-
+    path(
+        'loan-prediction/',
+        views.loan_prediction,
+        name='loan_prediction'
+    ),
     path(
         'login/',
         views.CustomLoginView.as_view(),

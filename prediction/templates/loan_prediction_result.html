@@ -1,0 +1,41 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{% static 'css/loan_prediction.css' %}">
+</head>
+<body>
+
+<div class="prediction-container">
+
+    <h1>Loan Prediction Result</h1>
+
+    {% if result.prediction == 1 %}
+        <p class="result-positive">
+            Customer is likely to accept the future loan offer.
+        </p>
+    {% else %}
+        <p class="result-negative">
+            Customer is unlikely to accept the future loan offer.
+        </p>
+    {% endif %}
+
+    <div class="result-container">
+        <h2>Predicted Probability</h2>
+        <p class="probability">
+            <strong>{{ result.probability }}%</strong>
+        </p>
+    </div>
+
+    <a href="{% url 'home' %}" class="predict-btn return-btn">
+        Return to Home
+    </a>
+
+</div>
+
+</body>
+</html>

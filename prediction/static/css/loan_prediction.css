@@ -1,0 +1,152 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7f5;
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #333;
+}
+
+.prediction-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 35px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+    text-align: center;
+    color: #398f4a;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #777;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #444;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d5dcd7;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    background: #fff;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #398f4a;
+}
+
+.predict-btn {
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+    padding: 14px;
+    background: #398f4a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.predict-btn:hover {
+    background: #2e753c;
+}
+
+.result-container {
+    margin-top: 30px;
+    padding: 22px;
+    border-radius: 8px;
+    background: #f4f8f5;
+    border: 1px solid #dce9df;
+    text-align: center;
+}
+
+.result-container h2 {
+    color: #398f4a;
+    margin-bottom: 15px;
+    font-size: 21px;
+}
+
+.result-positive {
+    color: #278044;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.result-negative {
+    color: #b45353;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.probability {
+    color: #555;
+    font-size: 15px;
+}
+
+.error-message {
+    margin-top: 20px;
+    padding: 12px;
+    background: #fff0f0;
+    color: #c0392b;
+    border-radius: 6px;
+    text-align: center;
+}
+
+@media (max-width: 650px) {
+    .prediction-container {
+        padding: 25px 20px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
+
+.return-btn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
