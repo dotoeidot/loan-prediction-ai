@@ -1,0 +1,70 @@
+{
+  "raw_input_columns": [
+    "Age",
+    "Annual_Income",
+    "Credit_Score",
+    "Loan_Amount",
+    "Loan_Term_Months",
+    "Debt_to_Income_Ratio",
+    "Employment_Type",
+    "Loan_Purpose"
+  ],
+  "numeric_columns": [
+    "Age",
+    "Annual_Income",
+    "Credit_Score",
+    "Loan_Amount",
+    "Loan_Term_Months",
+    "Debt_to_Income_Ratio"
+  ],
+  "categorical_columns": [
+    "Employment_Type",
+    "Loan_Purpose"
+  ],
+  "num_median": [
+    41.0,
+    69000.0,
+    680.0,
+    20000.0,
+    48.0,
+    0.33
+  ],
+  "num_mean": [
+    42.02345415778252,
+    69137.67846481876,
+    660.0400852878465,
+    30215.89936034115,
+    56.4046908315565,
+    0.3770021321961621
+  ],
+  "num_scale": [
+    13.776803068235662,
+    54200.55904166313,
+    122.69557423509504,
+    33807.99136307977,
+    31.724325269688475,
+    0.19799638706761546
+  ],
+  "cat_most_frequent": [
+    "Salaried",
+    "Home_Improvement"
+  ],
+  "categories": {
+    "Employment_Type": [
+      "Salaried",
+      "Self-Employed",
+      "Student",
+      "Unemployed"
+    ],
+    "Loan_Purpose": [
+      "Business",
+      "Debt_Consolidation",
+      "Education",
+      "Home_Improvement",
+      "Medical",
+      "Other"
+    ]
+  },
+  "missing_value_policy": "non-numeric, non-finite and negative numbers -> missing -> TRAIN median; missing/blank category -> TRAIN most frequent",
+  "unknown_category_policy": "all-zero one-hot block"
+}

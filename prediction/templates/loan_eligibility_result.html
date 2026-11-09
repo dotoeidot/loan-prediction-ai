@@ -1,0 +1,81 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Eligibility Result</title>
+    <link rel="stylesheet" href="{% static 'css/loan_eligibility.css' %}">
+</head>
+<body>
+
+    <!-- Top bar -->
+    <header class="topbar">
+        <h1 class="app-title">Loan Prediction</h1>
+
+        <form method="post" action="{% url 'logout' %}" class="logout-form">
+            {% csrf_token %}
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </header>
+
+    <!-- Result -->
+    <main class="content">
+
+        <div class="result-page">
+
+            <div class="result-card">
+
+                <h2>Loan Eligibility Prediction Result</h2>
+
+                <p class="result-subtitle">
+                    Your applicant assessment has been completed.
+                </p>
+
+                <div class="result-status
+                    {% if result.result == 'Likely Eligible' %}
+                        eligible
+                    {% else %}
+                        not-eligible
+                    {% endif %}">
+
+                    {{ result.result }}
+
+                </div>
+
+                <div class="result-details">
+
+                    <div>
+                        <span>Eligibility Probability</span>
+                        <strong>{{ result.probability }}%</strong>
+                    </div>
+
+                    <div>
+                        <span>Decision Threshold</span>
+                        <strong>{{ result.threshold }}%</strong>
+                    </div>
+
+                </div>
+
+                <p class="disclaimer">
+                    This is an AI-generated estimate based on the
+                    information provided. It does not guarantee loan
+                    approval. Final decisions depend on the lender's
+                    assessment.
+                </p>
+
+                <div class="result-actions">
+                    <a href="{% url 'home' %}" class="home-btn">
+                        Return to Home
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
