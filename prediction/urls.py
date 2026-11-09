@@ -12,6 +12,11 @@ urlpatterns = [
         name='loan_prediction'
     ),
     path(
+       'loan-eligibility/',
+       views.loan_eligibility,
+       name='loan_eligibility'
+    ),
+    path(
         'login/',
         views.CustomLoginView.as_view(),
         name='login'
@@ -65,4 +70,6 @@ urlpatterns = [
         ),
         name='password_reset_complete'
     ),
+
+    
 ]

@@ -5,6 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView
 
 from .ml_model import predict_loan_uptake
+from .loan_eligibility_model import predict_loan_eligibility
 
 
 # Homepage - Only accessible to authenticated users
@@ -46,7 +47,7 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 
-# Loan Prediction
+# Loan Uptake Prediction - Existing model
 @login_required
 def loan_prediction(request):
 
@@ -77,9 +78,45 @@ def loan_prediction(request):
 
     if result:
         return render(request, 'loan_prediction_result.html', {
-        'result': result
-    })
+            'result': result
+        })
 
     return render(request, 'loan_prediction.html', {
-    'error': error
-})
+        'error': error
+    })
+
+
+# Loan Eligibility Prediction - Knowledge Distillation Student
+
+# Loan Eligibility Prediction - Knowledge Distillation Student
+@login_required
+def loan_eligibility(request):
+
+    error = None
+
+    if request.method == 'POST':
+
+        try:
+            applicant = {
+                'Age': request.POST.get('age'),
+                'Annual_Income': request.POST.get('annual_income'),
+                'Credit_Score': request.POST.get('credit_score'),
+                'Loan_Amount': request.POST.get('loan_amount'),
+                'Loan_Term_Months': request.POST.get('loan_term_months'),
+                'Debt_to_Income_Ratio': request.POST.get('debt_to_income_ratio'),
+                'Employment_Type': request.POST.get('employment_type'),
+                'Loan_Purpose': request.POST.get('loan_purpose'),
+            }
+
+            result = predict_loan_eligibility(applicant)
+
+            return render(request, 'loan_eligibility_result.html', {
+                'result': result
+            })
+
+        except (ValueError, TypeError):
+            error = "Please enter valid values for all fields."
+
+    return render(request, 'loan_eligibility.html', {
+        'error': error
+    })

@@ -47,44 +47,54 @@
     <main class="content">
         <h2 class="page-heading">Choose a prediction</h2>
 
-        <div class="cards">
+        
+<div class="cards">
 
-            <!-- Loan Eligibility -->
-            <div class="card card-blue">
-                <h3>Loan Eligibility Head</h3>
-                <p class="model-type">Dense + Sigmoid</p>
-                <div class="question-box">
-                    <p class="question">Is the person eligible for a loan?</p>
-                    <p class="answer">Yes / No</p>
-                </div>
-                <button type="button">Predict</button>
-            </div>
+    <!-- Loan Eligibility -->
+    <div class="card card-blue">
+        <h3>Loan Eligibility Head</h3>
+        <p class="model-type">Knowledge Distillation Student</p>
 
-            <!-- Default Risk -->
-            <div class="card card-red">
-                <h3>Default Risk Head</h3>
-                <p class="model-type">Dense + Sigmoid</p>
-                <div class="question-box">
-                    <p class="question">Will the person become a defaulter?</p>
-                    <p class="answer">Yes / No</p>
-                </div>
-                <button type="button">Predict</button>
-            </div>
-
-            <!-- Future Loan Uptake -->
-            <div class="card card-green">
-                <h3>Future Loan Uptake Head</h3>
-                <p class="model-type">Dense + Sigmoid</p>
-                <div class="question-box">
-                    <p class="question">Will the person take a loan in the future?</p>
-                    <p class="answer">Yes / No</p>
-                </div>
-                <form action="{% url 'loan_prediction' %}" method="get">
-                    <button type="submit">Predict</button>
-                </form>
-            </div>
-
+        <div class="question-box">
+            <p class="question">Is the person eligible for a loan?</p>
+            <p class="answer">Yes / No</p>
         </div>
+
+        <form action="{% url 'loan_eligibility' %}" method="get">
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+
+    <!-- Default Risk -->
+    <div class="card card-red">
+        <h3>Default Risk Head</h3>
+        <p class="model-type">Dense + Sigmoid</p>
+
+        <div class="question-box">
+            <p class="question">Will the person become a defaulter?</p>
+            <p class="answer">Yes / No</p>
+        </div>
+
+        <button type="button">Predict</button>
+    </div>
+
+    <!-- Future Loan Uptake -->
+    <div class="card card-green">
+        <h3>Future Loan Uptake Head</h3>
+        <p class="model-type">Dense + Sigmoid</p>
+
+        <div class="question-box">
+            <p class="question">Will the person take a loan in the future?</p>
+            <p class="answer">Yes / No</p>
+        </div>
+
+        <form action="{% url 'loan_prediction' %}" method="get">
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+
+</div>
+
     </main>
 
 </body>
